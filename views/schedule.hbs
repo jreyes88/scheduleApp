@@ -1,0 +1,24 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+
+<p>{{momentTime}}</p>
+
+<table>
+	<thead>
+		<th></th>
+		{{#each showTimes}}
+			<th>{{time}}</th>
+		{{/each}}
+	</thead>
+
+	<tbody>
+		{{#each klruFeeds}}
+			<tr>
+				<td><b>{{full_name}}<b></td>
+				{{#each listings}}
+				{{formatEpisodeCellWidth title minutes}}
+				{{/each}}
+			</tr>
+		{{/each}}
+	</tbody>
+</table>

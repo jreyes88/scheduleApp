@@ -5,8 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// Used by hbs to help with Handlebars helpers
+var hbs = require('hbs');
+hbs.handlebars === require('handlebars');
+
 var index = require('./routes/index');
 var users = require('./routes/users');
+var schedule = require('./routes/schedule');
 
 var app = express();
 
@@ -24,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/schedule', schedule);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -41,6 +47,13 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+// register Handlebars helpers here
+hbs.registerHelper('formatEpisodeCellWidth', function(title, minutes) {
+  var showDurationCellHelper = minutes/30;
+  console.log("Show: " + title + " Duration: " + showDurationCellHelper);
+  return new hbs.handlebars.SafeString(`<td>${title}</td>`);
 });
 
 module.exports = app;
