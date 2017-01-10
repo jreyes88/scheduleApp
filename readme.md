@@ -1,5 +1,3 @@
-<snippet>
-  <content><![CDATA[
 # ${1:KLRU Schedule}
 Application designated to improve the online TV Schedule at KLRU.
 ## Installation
@@ -22,7 +20,3 @@ The application will then be served up at localhost:3000/
 Built on the fantastic KQED Node PBS TV Schedule module.
 See
 * https://github.com/KQED/node-pbs-tv-schedules
-
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
