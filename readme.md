@@ -1,4 +1,4 @@
-# 1:KLRU Schedule
+# KLRU Schedule
 Application designated to improve the online TV Schedule at KLRU.
 ## Installation
 ```
