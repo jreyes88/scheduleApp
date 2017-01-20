@@ -1,24 +1,30 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 
-<p>{{momentTime}}</p>
+<div class="timetable"></div>
 
-<table>
-	<thead>
-		<th></th>
-		{{#each showTimes}}
-			<th>{{time}}</th>
-		{{/each}}
-	</thead>
+<script src="javascripts/timetable.min.js"></script>
+<script>
+  var year = {{scheduleYear scheduleDate}};
+  var month = {{scheduleMonth scheduleDate}};
+  var day = {{scheduleDay scheduleDate}};
+  var timetable = new Timetable();
 
-	<tbody>
-		{{#each klruFeeds}}
-			<tr>
-				<td><b>{{full_name}}<b></td>
-				{{#each listings}}
-				{{formatEpisodeCellWidth title minutes}}
-				{{/each}}
-			</tr>
-		{{/each}}
-	</tbody>
-</table>
+  timetable.setScope(0, 23); // optional, only whole hours between 0 and 23
+  
+  timetable.addLocations([
+    {{#each klruFeeds}}
+      "{{full_name}}",
+    {{/each}}
+  ]);
+  
+  {{#each klruFeeds}}
+    {{#each listings}}
+  timetable.addEvent('{{title}}', '{{../full_name}}', new Date(year,month,day,{{startHour start_time}},{{startMinute start_time}}), new Date(year,month,day,{{endHour start_time duration}},{{endMinute start_time duration}}));
+
+    console.log("Title: {{title}} Start time: {{startHour start_time}}:{{startMinute start_time}}")
+    {{/each}}
+  {{/each}}
+  var renderer = new Timetable.Renderer(timetable);
+  renderer.draw('.timetable'); // any css selector
+</script>

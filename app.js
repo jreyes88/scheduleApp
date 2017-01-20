@@ -50,10 +50,76 @@ app.use(function(err, req, res, next) {
 });
 
 // register Handlebars helpers here
-hbs.registerHelper('formatEpisodeCellWidth', function(title, minutes) {
-  var showDurationCellHelper = minutes/30;
-  console.log("Show: " + title + " Duration: " + showDurationCellHelper);
-  return new hbs.handlebars.SafeString(`<td>${title}</td>`);
+// Easy console log.
+hbs.registerHelper('log', function(obj) {
+  console.log(obj);
+});
+
+// Helper to make year substring
+hbs.registerHelper('scheduleYear', function(moment) {
+  var year = moment.toString().substring(0, 4);
+  year = parseInt(year, 10);
+  return year;
+});
+
+// Helper to make month substring
+hbs.registerHelper('scheduleMonth', function(moment) {
+  var month = moment.toString().substring(4, 6);
+  month = parseInt(month, 10);
+  return month;
+});
+
+// Helper to make day substring
+hbs.registerHelper('scheduleDay', function(moment) {
+  var day = moment.toString().substring(6, 8);
+  day = parseInt(day, 10);
+  return day;
+});
+
+// Helper to get start hour
+hbs.registerHelper('startHour', function(startTime) {
+  var startHour = startTime.substring(0, 2);
+  startHour = parseInt(startHour, 10);
+  return startHour;
+});
+
+// Helper to get start minute
+hbs.registerHelper('startMinute', function(startTime) {
+  var startMinute = startTime.substring(2);
+  startMinute = parseInt(startMinute, 10);
+  return startMinute;
+});
+
+// Helper to get end hour
+hbs.registerHelper('endHour', function(startTime, duration) {
+  var hourAdder;
+  var endHour;
+  var durationLength = (duration + "").length;
+  var startHour = startTime.substring(0, 2);
+  startHour = Number(startHour);
+  if(durationLength == 2) {
+    hourAdder = 0;
+    endHour = startHour + hourAdder;
+    var endHourType = typeof(endHour);
+    return endHour;
+  } else {
+    var hourAdder = duration.toString().slice(0, -2);
+    hourAdder = Number(hourAdder);
+    endHour = startHour + hourAdder;
+    return endHour;
+  }
+});
+
+// Helper to get end hour
+hbs.registerHelper('endMinute', function(startTime, duration) {
+  var minuteAdder;
+  var endMinute;
+  var startMinute = startTime.slice(-2);
+  var minuteAdder = duration.toString().slice(-2);
+  minuteAdder = Number(minuteAdder);
+  startMinute = Number(startMinute);
+  endMinute = startMinute += minuteAdder;
+  return endMinute;
 });
 
 module.exports = app;
