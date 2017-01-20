@@ -21,8 +21,6 @@
   {{#each klruFeeds}}
     {{#each listings}}
   timetable.addEvent('{{title}}', '{{../full_name}}', new Date(year,month,day,{{startHour start_time}},{{startMinute start_time}}), new Date(year,month,day,{{endHour start_time duration}},{{endMinute start_time duration}}));
-
-    console.log("Title: {{title}} Start time: {{startHour start_time}}:{{startMinute start_time}}")
     {{/each}}
   {{/each}}
   var renderer = new Timetable.Renderer(timetable);
