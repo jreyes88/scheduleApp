@@ -122,6 +122,4 @@ hbs.registerHelper('endMinute', function(startTime, duration) {
   return endMinute;
 });
 
-console.log("Howdy there :( :)!:)");
-
 module.exports = app;
