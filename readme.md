@@ -13,7 +13,7 @@ See
 ```
 $ export PBS_TV_SCHEDULES_API_KEY='YOUR_KEY'
 $ cd node-pbs-tv-schedules
-$ npm start
+$ node app.js
 ```
 The application will then be served up at localhost:3000/
 ## Credits
