@@ -6,6 +6,10 @@ var channelFeeds;
 function getDatestamp(req, res, next) {
   var datestamp = moment().format('YYYYMMDD');
   req.datestamp = datestamp;
+
+  // Attempt to parse the correct time:
+  var timestamp = moment().format('YYYY-MM-DD hh:mm:ss a');
+  req.timestamp = timestamp;
   next();
 }
 
@@ -44,7 +48,14 @@ router.get('/', function(req, res, next) {
   res.render('schedule', {
     title: 'Schedule',
     scheduleDate: req.datestamp,
-    klruFeeds: req.channelFeeds
+    klruFeeds: req.channelFeeds,
+    timeDate: req.timestamp
+  });
+});
+
+router.get('/:programID', function(req, res, next) {
+  res.render('index', {
+    title: 'Program ID'
   });
 });
 

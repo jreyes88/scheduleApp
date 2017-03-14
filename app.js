@@ -121,7 +121,6 @@ hbs.registerHelper('endMinute', function(startTime, duration) {
   endMinute       = startMinute += minuteAdder;
   return endMinute;
 });
-
 app.listen(8080, function() {
   console.log("Howdy! Server listening on port: " + 8080);
 });

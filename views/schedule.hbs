@@ -1,11 +1,14 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 
-<p>{{scheduleDate}}</p>
+<p>{{timeDate}}</p>
+
+{{log scheduleDate}}
 
 <div class="timetable"></div>
 
-<script src="javascripts/timetable.min.js"></script>
+<script src="javascripts/timetable2.js"></script>
+<script src="javascripts/script.js"></script>
 <script>
   var year = {{scheduleYear scheduleDate}};
   var month = {{scheduleMonth scheduleDate}};
@@ -22,7 +25,28 @@
   
   {{#each klruFeeds}}
     {{#each listings}}
-  timetable.addEvent('{{title}}', '{{../full_name}}', new Date(year,month,day,{{startHour start_time}},{{startMinute start_time}}), new Date(year,month,day,{{endHour start_time duration}},{{endMinute start_time duration}}));
+      timetable
+        .addEvent(
+          "{{{title}}}",
+          '{{../full_name}}',
+          new Date(
+            year,
+            month,
+            day,
+            {{startHour start_time}},
+            {{startMinute start_time}}
+          ),
+          new Date(
+            year,
+            month,
+            day,
+            {{endHour start_time duration}},
+            {{endMinute start_time duration}}
+          ),
+          '{{show_id}}',
+          '{{program_id}}',
+          '{{type}}'
+        );
     {{/each}}
   {{/each}}
   var renderer = new Timetable.Renderer(timetable);
