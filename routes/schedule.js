@@ -1,14 +1,14 @@
 var express = require('express');
 var router  = express.Router();
-var moment = require('moment');
+var moment = require('moment-timezone');
 var channelFeeds;
 
 function getDatestamp(req, res, next) {
-  var datestamp = moment().format('YYYYMMDD');
+  var datestamp = moment().tz("America/Chicago").format('YYYYMMDD');
   req.datestamp = datestamp;
 
   // Attempt to parse the correct time:
-  var timestamp = moment().format('YYYY-MM-DD hh:mm:ss a');
+  var timestamp = moment().tz("America/Chicago").format('YYYY-MM-DD hh:mm:ss a');
   req.timestamp = timestamp;
   next();
 }
