@@ -1,0 +1,54 @@
+{{> nav}}
+
+<h1>{{title}}</h1>
+<h2>KLRU Board of Directors and Station Administration</h2>
+<p>Since its inception, Austin’s own community licensed public television station KLRU, has brought exceptional educational television to the Central Texas community. This non-profit 501(c)(3) organization is made possible through support from our members.</p>
+<h3>Board of Directors 2016-2017</h3>
+{{#each board}}
+  <div class="boardMemberInfo">
+    <strong><p>{{this.name}}{{#if this.executive}}*{{/if}}</p></strong>
+    {{#if this.title}}<p><em>{{this.title}}</em></p>{{/if}}
+    <p>{{this.company}}</p>
+  </div>
+{{/each}}
+<p>* Executive Committee member</p>
+
+<h3>Administration</h3>
+{{#each admin}}
+  <div class="adminInfo">
+    <a href="mailto:{{this.email}}"><strong><p>{{this.name}}</p></strong></a>
+    <p><em>{{this.title}}</em></p>
+    <p>Phone: {{this.phone}}</p>
+    {{#if this.mobile}}<p>Mobile: {{this.mobile}}</p>{{/if}}
+  </div>
+{{/each}}
+
+<h2>KLRU Community Advisory Board</h2>
+<p>KLRU is a community-licensed station managed by a Board of Directors. Further community input comes to the station through our Community Advisory Board.</p>
+<p>Meetings are the third Wednesday of the Month (unless otherwise noted) every 3 months. All meetings are at KLRU (unless otherwise noted) and start at 5:30 p.m.</p>
+<p>November 16, 2016</p>
+<p>February 15, 2017</p>
+<p>May 24, 2017</p>
+<p>August 16, 2017</p>
+<div id="cabBoard">
+  <h3>KLRU Community Advisory Board Members 2016-2017</h3>
+  {{#each cab}}
+    {{#unless this.klruMember}}<p>{{this.name}}</p>{{/unless}}
+  {{/each}}
+  <h3>KLRU Members</h3>
+  {{#each cab}}
+    {{#if this.klruMember}}<p>{{this.name}}</p>{{/if}}
+  {{/each}}
+</div>
+<p>We are currently accepting applications for consideration of membership to the KLRU Community Advisory Board (CAB). Applications should be submitted by Friday, April 7, 2017, and will be reviewed by the CAB Nominating Committee.</p>
+<a href="#"><p>Community Advisory Board Application</p></a>
+<h3>About the CAB</h3>
+<p>The KLRU Community Advisory Board is composed of up to 30 individuals who reflect the diverse interests, concerns, organizations, issues and populations of the Central Texas community. The CAB helps guide KLRU in a variety of ways. Membership in the CAB is open to anyone who lives in the designated market area for KLRU and who has demonstrated an interest in KLRU. Members are selected by the existing CAB after being nominated by the staff, or the CAB, or they may nominate themselves. The role of the CAB is to provide a link between the community-at-large and the staff of KLRU. Members elected to the CAB commit to serve a two-year term.</p>
+<h3>The duties of the CAB are:</h3>
+<ul>
+  <li>Act as a liaison between KLRU and the community.</li>
+  <li>Raise community awareness about KLRU, its programming and its services.</li>
+  <li>Advise KLRU on issues of importance in the community where KLRU may have an impact.</li>
+  <li>Encourage community involvement in KLRU projects, activities.</li>
+  <li>Ensure that the content of the programming reflects the community.</li>
+</ul>

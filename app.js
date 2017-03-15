@@ -10,8 +10,8 @@ var hbs          = require('hbs');
 hbs.handlebars   === require('handlebars');
 
 var index        = require('./routes/index');
-var users        = require('./routes/users');
 var schedule     = require('./routes/schedule');
+var about        = require('./routes/about');
 
 var app          = express();
 
@@ -28,8 +28,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
 app.use('/schedule', schedule);
+app.use('/about', about);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -121,6 +121,9 @@ hbs.registerHelper('endMinute', function(startTime, duration) {
   endMinute       = startMinute += minuteAdder;
   return endMinute;
 });
+
+hbs.registerPartials(__dirname + '/views/partials');
+
 app.listen(8080, function() {
   console.log("Howdy! Server listening on port: " + 8080);
 });

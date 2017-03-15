@@ -7,45 +7,44 @@ a {
   color: #00B7FF;
 }
 
-/* Modals */
-.modal-container {
-  position: fixed;
-  background-color: #fff;
-  width: 70%;
-  max-width: 400px;
-  left: 50%;
-  padding: 20px;
-  border-radius: 5px;
-
-  -webkit-transform: translate(-50%, -200%);
-  -ms-transform: translate(-50%, -200%);
-  transform: translate(-50%, -200%);
-
-  -webkit-transition: -webkit-transform 200ms ease-out;
-  transition: transform 200ms ease-out;
+/* Navigation */
+#navLogo {
+  width: 10%;
 }
 
-.modal:before {
-  content: "";
-  position: fixed;
-  display: none;
-  background-color: rgba(0,0,0,.8);
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
+#navList {
+  padding: 0;
 }
 
-.modal:target:before {
-  display: block;
+#navList li {
+  display: inline;
+  list-style-type: none;
+  padding-right: 20px;
 }
 
-.modal:target .modal-container {
-  top: 20%;
-
-  -webkit-transform: translate(-50%, 0%);
-  -ms-transform: translate(-50%, 0%);
-  transform: translate(-50%, 0%);
+/* Board of Directors */
+.boardMemberInfo {
+  margin-bottom: 20px;
 }
 
-#modal-close {}
+.boardMemberInfo p {
+  margin: 0;
+}
+
+/* Administration */
+.adminInfo {
+  margin-bottom: 20px;
+}
+
+.adminInfo p {
+  margin: 0;
+}
+
+/* Community Advisory Board */
+#cabBoard {
+  margin-bottom: 20px;
+}
+
+#cabBoard p {
+  margin: 0;
+}

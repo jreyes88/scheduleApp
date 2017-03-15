@@ -1,15 +1,16 @@
+{{> nav}}
+
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 
 <p>Schedule Date: {{scheduleDate}}</p>
 <p>Timestamp Date: {{timeDate}}</p>
 
-{{log scheduleDate}}
+{{log title}}
 
 <div class="timetable"></div>
 
 <script src="javascripts/timetable2.js"></script>
-<script src="javascripts/script.js"></script>
 <script>
   var year = {{scheduleYear scheduleDate}};
   var month = {{scheduleMonth scheduleDate}};
