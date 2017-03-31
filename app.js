@@ -123,5 +123,8 @@ hbs.registerHelper('endMinute', function(startTime, duration) {
 });
 
 console.log("Howdy there!");
+app.listen(8080, function() {
+    console.log("server listening on port: " + 8080);
+});
 
 module.exports = app;
