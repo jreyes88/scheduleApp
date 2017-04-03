@@ -1,0 +1,943 @@
+/* Overall Style */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  width: 80%;
+  margin: 0;
+  padding: 0 10%;
+  color: #fff;
+  font-family: PBSKids;
+  font-size: 1.4rem;
+}
+
+/* Typography */
+@font-face {
+  font-family: PBSKids;
+  src: url(../Fonts/PBS-Kids_Font/PBSKIDSHeadline-Regular.ttf);
+}
+
+@font-face {
+  font-family: Lato;
+  src: url(../Fonts/Lato/Lato-Regular.ttf);
+}
+
+p {
+  font-size: 2.0rem;
+  letter-spacing: 2px;
+}
+
+h1 {
+  font-size: 3.7rem;
+  letter-spacing: 4px;
+  color: #fff;
+}
+
+/* Banner */
+#bannerImage {
+  margin-top: 3%;
+  max-height: 6.5vh;
+}
+
+/* Video Area */
+#videoArea {
+  margin-top: 8vh;
+  position: relative;
+}
+
+#iframeArea {
+  position: relative;
+  padding-bottom: 70%;
+  padding-top: 35px;
+  height: 0;
+  overflow: hidden;
+}
+
+#iframeArea iframe {
+  overflow: hidden;
+}
+
+/* Parents Button */
+.parentsButtonOuter {
+  position: absolute;
+  top: 18vh;
+  right: 0;
+  background-color: #ed626a;
+  height: 40vh;
+  width: 7vw;
+  border-left: 12px solid;
+  border-color: #b74b51;
+}
+
+.parentsButtonOuter:hover {
+  border-left-width: 6px;
+  padding-right: 6px;
+}
+
+.parentsButtonInner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.rotate {
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(90deg);
+     -moz-transform: translateX(-50%) translateY(-50%) rotate(90deg);
+          transform: translateX(-50%) translateY(-50%) rotate(90deg);
+}
+
+.parentsButtonInner h1 {
+  font-size: 2.5rem;
+}
+
+/* Cloud Area */
+.cloudArea {
+  background-color: #00b8f1;
+  background-size: cover;
+  background-repeat: no-repeat, repeat;
+  height: 50vh;
+  display: flex;
+}
+
+.container {
+  flex: 1;
+  height: 100%;
+}
+
+#cloud-intro {
+  position: relative;
+  height: 100%;
+  background: url(../Images/Kids/CloudArea/clouds1000.png);
+  background: url(../Images/Kids/CloudArea/clouds1000.png),
+              url(../Images/Kids/CloudArea/clouds1200.png);
+  background-repeat: repeat-x;
+  animation: wind 60s linear infinite;
+  display: flex;
+}
+
+@keyframes wind{
+  0% {
+    background-position: 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: 1000px 0, 1200px 0, 1100px 0;
+  }
+}
+
+#cloudButtons {
+  margin: auto;
+  z-index: 40;
+  display: flex;
+}
+
+.cloudButton {
+  display: inline;
+  flex: 1;
+}
+
+.cloudButton img {
+  margin: 2vw;
+  max-width: 15vw;
+}
+
+#boyAndGiraffe {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 80%;
+}
+
+#butterfly {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  height: 15%;
+}
+
+#balloon {
+  position: absolute;
+  right: 0;
+  bottom: 15%;
+  height: 70%;
+}
+
+/* Rotating Link Area */
+.rotatingArea {
+  height: 50vh;
+  background-color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.fixed-size {
+  width: 20%;
+  margin-bottom: 20px;
+}
+
+.fixed-size img {
+  width: 100%;
+}
+
+.rotatingDivider {
+  max-height: 75%;
+}
+
+/* Big Sponsors Area */
+.sponsorsArea_Big {
+  height: 50vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#sponsorsContainer_Big {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+#sponsorsHeader_Big {
+  background-color: #70b46e;
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+#innerSponsorsContainer_Big {
+  background-color: #70b46e;
+  flex: 6;
+  display: flex;
+}
+
+.sponsor_Big {
+  flex: 1;
+  display: flex;
+}
+
+.sponsor_Big a {
+  display: flex;
+}
+
+.sponsorImage_Big {
+  width: 90%;
+  margin: auto;
+}
+
+#adContainer_Big {
+  flex: 1;
+  display: flex;
+  background-color: #ccc;
+  border-left: 5px solid #fff;
+}
+
+#adContainer_Big a {
+  flex: 1;
+  display: flex;
+}
+
+#ad_Big {
+  margin: auto;
+  width: 80%;
+}
+
+/* Small Sponsors Area */
+.sponsorsArea_Small {
+  display: none;
+  background-color: #70b46e;
+}
+
+#sponsorsHeader_Small {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex: 1;
+  margin-top: 10%
+}
+
+#sponsorsHeader_Small h1 {
+  margin: auto;
+}
+
+#sponsorsContainer_Small {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+}
+
+.sponsor_Small {
+  flex: 1;
+}
+
+.sponsor_Small a {
+  display: flex;
+  height: 150px;
+}
+
+.sponsorImage_Small {
+  margin: auto;
+  max-height: 100%;
+  max-width: 45%;
+}
+
+#adContainer_Small {
+  flex: 1;
+  background-color: #ccc;
+  margin-top: 10%;
+}
+
+#adContainer_Small a {
+  display: flex;
+  height: 150px;
+}
+
+#ad_Small {
+  margin: auto;
+  max-height: 100%;
+  max-width: 45%;
+}
+
+/* Footer Area */
+#footerArea {
+  height: 40vh;
+  background-color: #fff;
+  display: flex;
+}
+
+#footerContainer {
+  margin: auto;
+}
+
+#footerLogo {
+  display: block;
+  margin: 0 auto;
+  width: 15%;
+}
+
+#footerArea p {
+  text-transform: none;
+  font-family: "Lato", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+  font-size: 1.6rem;
+  letter-spacing: .5px;
+  color: #000;
+  text-align: center;
+  margin: .5rem 0 0 0;
+}
+
+#footerArea p a {
+  color: #6caddf;
+  text-decoration: none;
+}
+
+#footerArea p a:hover {
+  color: #31372D;
+}
+
+/* Done */
+@media only screen and (max-width: 499px) {
+  /* Typography */
+  h1 {
+    font-size: 2.0rem;
+    letter-spacing: 1px;
+  }
+
+  /* Parents Button */
+  .parentsButtonOuter {
+    top: 0;
+    height: 11vh;
+    width: 40vw;
+    border-left: 0;
+    border-bottom: 12px solid;
+    border-color: #b74b51;
+    display: flex;
+  }
+
+  .parentsButtonOuter:hover {
+    border-left-width: 0px;
+    padding-right: 0;
+    border-bottom-width: 6px;
+    padding-top: 6px;
+  }
+
+  .parentsButtonInner {
+    position: static;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 0 15%;
+    display: flex;
+  }
+
+  .parentsButtonInner h1 {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    display: flex;
+    margin: auto;
+    text-align: center;
+  }
+
+  .rotate {
+    -webkit-transform: none;
+    -moz-transform: none;
+    transform: none;
+  }
+
+  /* Video Area */
+  #iframeArea {
+    padding-bottom: 135%;
+  }
+
+  /* Cloud Area */
+  .cloudArea {
+    height: 60vh;
+  }
+  .cloudButton img {
+    max-width: 30vw;
+  }
+
+  #boyAndGiraffe {
+    left: 2%;
+    height: 75%;
+  }
+
+  #butterfly {
+    display: none;
+  }
+
+  #balloon {
+    display: none;
+  }
+
+  /* Rotating Link Area */
+  .rotatingArea {
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .rotatingDivider {
+    display: none;
+  }
+
+  .fixed-size {
+    display: flex;
+    margin: auto;
+    width: 100%;
+  }
+
+  .fixed-size a {
+    margin: auto;
+    display: flex;
+    height: 25vh;
+  }
+
+  .fixed-size img {
+    margin: auto;
+    max-height: 20vh;
+    width: auto;
+    max-width: 70vw;
+  }
+
+  /* Sponsors Area */
+  .sponsorsArea_Big {
+    display: none;
+  }
+
+  .sponsorsArea_Small {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sponsor_Small a {
+    height: 15vh;
+  }
+
+  .sponsorImage_Small {
+    max-width: 60%;
+  }
+
+  #adContainer_Small a {
+    height: 15vh;
+  }
+  
+  /* Footer Area */
+  #footerArea {
+    height: 23vh;
+  }
+
+  #footerLogo {
+    width: 30%;
+  }
+
+  #footerContainer {
+    margin: auto;
+  }
+
+  #footerTextArea p {
+    font-size: 1.0rem;
+  }
+}
+
+/* Done */
+@media only screen and (min-width: 500px) and (max-width: 749px) and (max-height: 499px) {
+  /* Typography */
+  h1 {
+    font-size: 2.0rem;
+    letter-spacing: 1px;
+  }
+
+  /* Banner Area */
+  #bannerImage {
+    max-height: 8vh;
+  }
+
+  /* Parents Button */
+  .parentsButtonOuter {
+    top: 0;
+    height: 11vh;
+    width: 25vw;
+    border-left: 0;
+    border-bottom: 12px solid;
+    border-color: #b74b51;
+    display: flex;
+  }
+
+  .parentsButtonOuter:hover {
+    border-left-width: 0px;
+    padding-right: 0;
+    border-bottom-width: 6px;
+    padding-top: 6px;
+  }
+
+  .parentsButtonInner {
+    position: static;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 0 15%;
+    display: flex;
+  }
+
+  .parentsButtonInner h1 {
+    font-size: 1.7rem;
+    letter-spacing: 1px;
+    display: flex;
+    margin: auto;
+    text-align: center;
+  }
+
+  .rotate {
+    -webkit-transform: none;
+    -moz-transform: none;
+    transform: none;
+  }
+
+  /* Video Area */
+  #iframeArea {
+    padding-bottom: 135%;
+  }
+
+  /* Cloud Area */
+  .cloudArea {
+    height: 80vh;
+  }
+
+  .cloudButton img {
+    max-width: 23vw;
+  }
+
+  /* Rotating Link Area */
+  .rotatingArea {
+    height: 80vh;
+  }
+
+  .rotatingDivider {
+    height: 50vh;
+  }
+
+  /* Sponsors Area */
+  .sponsorsArea_Big {
+    display: none;
+  }
+
+  .sponsorsArea_Small {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #sponsorsHeader_Small h1 {
+    margin: 5% auto;
+  }
+
+  .sponsor_Small a {
+    height: 120px;
+  }
+
+  .sponsorImage_Small {
+    max-height: 120%;
+  }
+
+  #adContainer_Small {
+    margin-top: 10%;
+  }
+
+  #ad_Small {
+    max-width: 30%;
+  }
+
+  /* Footer Area */
+  #footerArea {
+    margin-top: 2em;
+  }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 749px) and (min-height: 500px) {
+  /* Typography */
+  h1 {
+    font-size: 2.7rem;
+    letter-spacing: 2.5px;
+  }
+
+  /* Banner Area */
+  #bannerImage {
+    max-height: 7vh;
+  }
+
+  /* Parents Button */
+  .parentsButtonOuter {
+    top: 0;
+    height: 11vh;
+    width: 25vw;
+    border-left: 0;
+    border-bottom: 12px solid;
+    border-color: #b74b51;
+    display: flex;
+  }
+
+  .parentsButtonOuter:hover {
+    border-left-width: 0px;
+    padding-right: 0;
+    border-bottom-width: 6px;
+    padding-top: 6px;
+  }
+
+  .parentsButtonInner {
+    position: static;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 0 15%;
+    display: flex;
+  }
+
+  .parentsButtonInner h1 {
+    font-size: 1.7rem;
+    letter-spacing: 1px;
+    display: flex;
+    margin: auto;
+    text-align: center;
+  }
+
+  .rotate {
+    -webkit-transform: none;
+    -moz-transform: none;
+    transform: none;
+  }
+
+  /* Video Area */
+  #iframeArea {
+    padding-bottom: 97%;
+  }
+
+  /* Cloud Area */
+  .cloudArea {
+    height: 50vh;
+  }
+
+  .cloudButton img {
+    max-width: 25vw;
+  }
+
+  #boyAndGiraffe {
+    left: 5%;
+    height: 90%;
+  }
+
+  #butterfly {
+    display: none;
+  }
+
+  /* Rotating Link Area */
+  .rotatingArea {
+    height: 50vh;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+  }
+
+  .rotatingDivider {
+    display: none;
+    flex: none;
+  }
+
+  .fixed-size {
+    flex: 1;
+    width: 50vh;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .fixed-size a {
+    margin: auto;
+    display: flex;
+    height: 23vh;
+  }
+
+  .fixed-size a img {
+    margin: auto;
+    width: 20vh;
+  }
+
+  /* Sponsors Area */
+  .sponsorsArea_Big {
+    display: none;
+  }
+
+  .sponsorsArea_Small {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #sponsorsHeader_Small h1 {
+    margin: auto;
+  }
+
+  /* Footer Area */
+  #footerArea {
+    height: 27vh;
+  }
+
+  #footerLogo {
+    width: 20%;
+  }
+}
+
+/* Done */
+@media only screen and (min-width: 750px) and (max-width: 1079px) and (max-height: 999px) {
+  /* Typography */
+  h1 {
+    font-size: 2.4rem;
+    letter-spacing: 2.0px;
+  }
+
+  /* Parents Button */
+  .parentsButtonOuter {
+    width: 8vw;
+    height: 27vh;
+  }
+
+  .parentsButtonInner {
+    height: 8vw;
+    width: auto;
+    display: flex;
+  }
+
+  .parentsButtonInner h1 {
+    margin: auto;
+    font-size: 2.2rem;
+    letter-spacing: 1.0px;
+  }
+
+  /* Video Area */
+  #videoArea {
+    margin-top: 6vh;
+  }
+
+  #iframeArea {
+    padding-bottom: 98%;
+  }
+
+  /* Cloud Area */
+  .cloudArea {
+    height: 55vh;
+  }
+
+  .cloudButton img {
+    max-width: 23vw;
+  }
+
+  /* Rotating Link Area */
+  .rotatingArea {
+    display: flex;
+    flex-flow: row wrap;
+    height: 55vh;
+  }
+
+  .rotatingDivider {
+    display: none;
+    flex: none;
+  }
+
+  .fixed-size {
+    display: flex;
+    flex: 1 0 50%;
+    margin: 0;
+  }
+
+  .fixed-size a {
+    margin: auto;
+    display: flex;
+    max-height: 25vh;
+  }
+
+  .fixed-size a img {
+    margin: auto;
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+  }
+
+  /* Sponsors Area */
+  .sponsorsArea_Big {
+    display: none;
+  }
+
+  .sponsorsArea_Small {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #sponsorsHeader_Small h1 {
+    margin: 0 auto;
+  }
+
+  .sponsor_Small a {
+    height: 120px;
+  }
+
+  .sponsorImage_Small {
+    max-width: 40%;
+  }
+
+  #ad_Small {
+    max-width: 30%;
+    max-height: 10vh;
+  }
+
+  /* Footer Area */
+  #footerArea {
+    margin-top: 0;
+    height: 20vh;
+  }
+}
+
+@media only screen and (min-width: 750px) and (max-width: 999px) and (min-height: 1000px) {
+  /* Video Area */
+  #videoArea {
+    margin-top: 6vh;
+  }
+
+  #iframeArea {
+    padding-bottom: 97%;
+  }
+
+  /* Cloud Area */
+  .cloudArea {
+    height: 40vh;
+  }
+
+  .cloudButton img {
+    max-width: 23vw;
+  }
+
+  #butterfly {
+    height: 10%;
+  }
+
+  #balloon {
+    height: 57%;
+  }
+
+  /* Rotating Links Area */
+  .rotatingArea {
+    height: 25vh;
+  }
+
+  /* Sponsors Area */
+  .sponsorsArea_Big {
+    height: 25vh;
+  }
+
+  /* Footer Area */
+  #footerArea {
+    margin-top: 0;
+    height: 20vh;
+  }
+}
+
+@media only screen and (min-width: 1000px) and (min-height: 1300px) {
+  /* Video Area */
+  #iframeArea {
+    padding-bottom: 74%;
+  }
+
+  /* Cloud Area */
+  .cloudArea {
+    height: 35vh;
+  }
+
+  .cloudButton img {
+    max-width: 20vw;
+  }
+
+  /* Rotating Area */
+  .rotatingArea {
+    height: 35vh;
+  }
+
+  /* Footer Area */
+  #footerArea {
+    margin-top: 0;
+    height: 20vh;
+  }
+}
+
+@media only screen and (min-device-width: 1000px) and (min-device-height: 1300px) {
+  /* Video Area */
+  #iframeArea {
+    padding-bottom: 74%;
+  }
+
+  /* Cloud Area */
+  .cloudArea {
+    height: 35vh;
+  }
+
+  .cloudButton img {
+    max-width: 20vw;
+  }
+
+  /* Rotating Area */
+  .rotatingArea {
+    height: 35vh;
+  }
+
+  /* Sponsors Area */
+  .sponsorsArea_Big {
+    height: 35vh;
+  }
+
+  /* Footer Area */
+  #footerArea {
+    margin-top: 0;
+    height: 20vh;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  .fixed-size {
+    width: 15%;
+  }
+}

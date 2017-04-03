@@ -12,6 +12,7 @@ hbs.handlebars   === require('handlebars');
 var index        = require('./routes/index');
 var schedule     = require('./routes/schedule');
 var about        = require('./routes/about');
+var kids         = require('./routes/kids');
 
 var app          = express();
 
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/schedule', schedule);
 app.use('/about', about);
+app.use('/kids', kids);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

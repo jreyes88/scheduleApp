@@ -12,7 +12,7 @@
     "express": "~4.14.0",
     "express-timestamp": "^0.1.4",
     "hbs": "~4.0.1",
-    "moment-timezone": "^0.5.11",
+    "moment-timezone": "^0.5.12",
     "morgan": "~1.7.0",
     "node-pbs-tv-schedules": "^0.3.0",
     "serve-favicon": "~2.3.0"

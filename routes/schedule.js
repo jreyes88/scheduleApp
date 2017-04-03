@@ -47,6 +47,7 @@ router.use(getListings);
 router.get('/', function(req, res, next) {
   res.render('schedule', {
     title: 'Schedule',
+    style: 'style',
     scheduleDate: req.datestamp,
     klruFeeds: req.channelFeeds,
     timeDate: req.timestamp
@@ -55,7 +56,8 @@ router.get('/', function(req, res, next) {
 
 router.get('/:programID', function(req, res, next) {
   res.render('index', {
-    title: 'Program ID'
+    title: 'Program ID',
+    style: 'style'
   });
 });
 
