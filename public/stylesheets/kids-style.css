@@ -15,12 +15,12 @@ body {
 /* Typography */
 @font-face {
   font-family: PBSKids;
-  src: url(../Fonts/PBS-Kids_Font/PBSKIDSHeadline-Regular.ttf);
+  src: url(../fonts/PBS-Kids_Font/PBSKIDSHeadline-Regular.ttf);
 }
 
 @font-face {
   font-family: Lato;
-  src: url(../Fonts/Lato/Lato-Regular.ttf);
+  src: url(../fonts/Lato/Lato-Regular.ttf);
 }
 
 p {
@@ -108,9 +108,9 @@ h1 {
 #cloud-intro {
   position: relative;
   height: 100%;
-  background: url(../Images/Kids/CloudArea/clouds1000.png);
-  background: url(../Images/Kids/CloudArea/clouds1000.png),
-              url(../Images/Kids/CloudArea/clouds1200.png);
+  background: url(../images/Kids/CloudArea/clouds1000.png);
+  background: url(../images/Kids/CloudArea/clouds1000.png),
+              url(../images/Kids/CloudArea/clouds1200.png);
   background-repeat: repeat-x;
   animation: wind 60s linear infinite;
   display: flex;
