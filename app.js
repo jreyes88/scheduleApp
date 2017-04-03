@@ -1,19 +1,19 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
+var express      = require('express');
+var path         = require('path');
+var favicon      = require('serve-favicon');
+var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var bodyParser   = require('body-parser');
 
 // Used by hbs to help with Handlebars helpers
-var hbs = require('hbs');
-hbs.handlebars === require('handlebars');
+var hbs          = require('hbs');
+hbs.handlebars   === require('handlebars');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-var schedule = require('./routes/schedule');
+var index        = require('./routes/index');
+var schedule     = require('./routes/schedule');
+var about        = require('./routes/about');
 
-var app = express();
+var app          = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,12 +28,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
 app.use('/schedule', schedule);
+app.use('/about', about);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  var err    = new Error('Not Found');
   err.status = 404;
   next(err);
 });
@@ -42,7 +42,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error   = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
   res.status(err.status || 500);
@@ -58,35 +58,35 @@ hbs.registerHelper('log', function(obj) {
 // Helper to make year substring
 hbs.registerHelper('scheduleYear', function(moment) {
   var year = moment.toString().substring(0, 4);
-  year = parseInt(year, 10);
+  year     = parseInt(year, 10);
   return year;
 });
 
 // Helper to make month substring
 hbs.registerHelper('scheduleMonth', function(moment) {
   var month = moment.toString().substring(4, 6);
-  month = parseInt(month, 10);
+  month     = parseInt(month, 10);
   return month;
 });
 
 // Helper to make day substring
 hbs.registerHelper('scheduleDay', function(moment) {
-  var day = moment.toString().substring(6, 8);
-  day = parseInt(day, 10);
+  var day   = moment.toString().substring(6, 8);
+  day       = parseInt(day, 10);
   return day;
 });
 
 // Helper to get start hour
 hbs.registerHelper('startHour', function(startTime) {
   var startHour = startTime.substring(0, 2);
-  startHour = parseInt(startHour, 10);
+  startHour     = parseInt(startHour, 10);
   return startHour;
 });
 
 // Helper to get start minute
 hbs.registerHelper('startMinute', function(startTime) {
   var startMinute = startTime.substring(2);
-  startMinute = parseInt(startMinute, 10);
+  startMinute     = parseInt(startMinute, 10);
   return startMinute;
 });
 
@@ -95,8 +95,8 @@ hbs.registerHelper('endHour', function(startTime, duration) {
   var hourAdder;
   var endHour;
   var durationLength = (duration + "").length;
-  var startHour = startTime.substring(0, 2);
-  startHour = Number(startHour);
+  var startHour      = startTime.substring(0, 2);
+  startHour          = Number(startHour);
   if(durationLength == 2) {
     hourAdder = 0;
     endHour = startHour + hourAdder;
@@ -116,15 +116,17 @@ hbs.registerHelper('endMinute', function(startTime, duration) {
   var endMinute;
   var startMinute = startTime.slice(-2);
   var minuteAdder = duration.toString().slice(-2);
-  minuteAdder = Number(minuteAdder);
-  startMinute = Number(startMinute);
-  endMinute = startMinute += minuteAdder;
+  minuteAdder     = Number(minuteAdder);
+  startMinute     = Number(startMinute);
+  endMinute       = startMinute += minuteAdder;
   return endMinute;
 });
 
-console.log("Howdy there!");
+
+hbs.registerPartials(__dirname + '/views/partials');
+
 app.listen(8080, function() {
-    console.log("server listening on port: " + 8080);
+  console.log("Howdy! Server listening on port: " + 8080);
 });
 
 module.exports = app;

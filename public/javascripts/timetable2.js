@@ -64,7 +64,12 @@ Timetable.Renderer = function(t) {
                     n.push(t)
                 }), this
             },
-            addEvent: function(t, e, n, o, a) {
+            addEvent: function(t, e, n, o, showID, programID, type, a) {
+                console.log("Title: " + t);
+                console.log("Show: " + showID);
+                console.log("Program: " + programID);
+                console.log("Type: " + type);
+                console.log("--------------------");
                 if (!r(e, this.locations)) throw new Error("Unknown location");
                 if (!i(n, o)) throw new Error("Invalid time range: " + JSON.stringify([n, o]));
                 var c = "[object Object]" === Object.prototype.toString.call(a);
@@ -73,7 +78,10 @@ Timetable.Renderer = function(t) {
                     location: e,
                     startDate: n,
                     endDate: o,
-                    options: c ? a : void 0
+                    show: showID,
+                    program: programID,
+                    programType: type,
+                    options: c ? a : void 0,
                 }), this
             }
         }, Timetable.Renderer.prototype = {
@@ -131,11 +139,12 @@ Timetable.Renderer = function(t) {
                         i = !1;
                     r && (n = void 0 !== t.options.url, o = void 0 !== t.options["class"], i = void 0 !== t.options.data);
                     var a = n ? "a" : "span",
-                        c = e.appendChild(document.createElement(a)),
+                        link = e.appendChild(document.createElement("a"))
+                        c = link.appendChild(document.createElement(a)),
                         s = c.appendChild(document.createElement("small"));
                     if (c.title = t.name, n && (c.href = t.options.url), i)
                         for (var l in t.options.data) c.setAttribute("data-" + l, t.options.data[l]);
-                    c.className = o ? "time-entry " + t.options["class"] : "time-entry", c.style.width = h(t), c.style.left = m(t), s.textContent = t.name
+                    link.href = "/schedule/show/" + t.program, c.className = o ? "time-entry " + t.options["class"] : "time-entry", c.style.width = h(t), c.style.left = m(t), s.textContent = t.name
                 }
 
                 function h(t) {
