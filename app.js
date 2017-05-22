@@ -4,6 +4,7 @@ var favicon      = require('serve-favicon');
 var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
+var Handlebars   = require('handlebars');
 
 // Used by hbs to help with Handlebars helpers
 var hbs          = require('hbs');
@@ -13,6 +14,7 @@ var index        = require('./routes/index');
 var schedule     = require('./routes/schedule');
 var about        = require('./routes/about');
 var kids         = require('./routes/kids');
+var show         = require('./routes/show');
 
 var app          = express();
 
@@ -32,6 +34,7 @@ app.use('/', index);
 app.use('/schedule', schedule);
 app.use('/about', about);
 app.use('/kids', kids);
+app.use('/show', show);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -123,6 +126,13 @@ hbs.registerHelper('endMinute', function(startTime, duration) {
   endMinute       = startMinute += minuteAdder;
   return endMinute;
 });
+
+hbs.registerHelper('link', function(text, url) {
+	var url = Handlebars.escapeExpression(url),
+	    text = Handlebars.escapeExpression(text);
+	
+	return new Handlebars.SafeString("<a href='" + url + "'>" + text + "</a>");
+    });
 
 
 hbs.registerPartials(__dirname + '/views/partials');
