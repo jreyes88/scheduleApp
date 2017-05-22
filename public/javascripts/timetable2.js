@@ -144,7 +144,7 @@ Timetable.Renderer = function(t) {
                         s = c.appendChild(document.createElement("small"));
                     if (c.title = t.name, n && (c.href = t.options.url), i)
                         for (var l in t.options.data) c.setAttribute("data-" + l, t.options.data[l]);
-                    link.href = "/schedule/show/" + t.name, c.className = o ? "time-entry " + t.options["class"] : "time-entry", c.style.width = h(t), c.style.left = m(t), s.textContent = t.name
+                    link.href = "/show/" + t.program + "/" + t.name, c.className = o ? "time-entry " + t.options["class"] : "time-entry", c.style.width = h(t), c.style.left = m(t), s.textContent = t.name
                 }
 
                 function h(t) {

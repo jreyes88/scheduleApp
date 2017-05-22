@@ -12,6 +12,8 @@ See
 * https://projects.pbs.org/confluence/display/tvsapi/TV+Schedules+Version+2
 ```
 $ export PBS_TV_SCHEDULES_API_KEY='YOUR_KEY'
+$ export MediaManager_API_ID='YOUR_ID'
+$ export MediaManager_API_SECRET='YOUR_SECRET'
 $ cd node-pbs-tv-schedules
 $ node app.js
 ```
