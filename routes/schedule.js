@@ -54,7 +54,8 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.get('/:programID', function(req, res, next) {
+router.get('/show/:programID', function(req, res, next) {
+  console.log(req);
   res.render('index', {
     title: 'Program ID',
     style: 'style'

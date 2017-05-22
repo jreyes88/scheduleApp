@@ -1,0 +1,211 @@
+body {
+    display: none;
+}
+
+html {
+    background: #eeeee7;
+}
+
+body {
+    background: #eeeee7;
+    color: #333;
+    padding-top: 30px;
+}
+
+.hero-unit {
+    margin: 0 auto;
+    background-color: #FFF;
+    padding: 60px;
+    border: 1px solid #ccc;
+}
+
+.hero-unit h1 {
+    line-height: 1;
+    letter-spacing: -1px;
+    text-align: center;
+    color: #114C7F;
+    margin: 40px 0;
+}
+
+.hero-unit h3 {
+    color: #114C7F;
+    font-family: 'HelveticaNeueW01-55Roma', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.legal {
+    padding: 30px 60px;
+}
+
+.description, label, .requiredMessage {
+    font-family: citrixsans-regular, 'HelveticaNeueW01-55Roma', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.description{
+    word-wrap: break-word;
+}
+
+.word-wrap-break {
+    word-wrap: break-word;
+}
+
+.requiredMessage, .alert, footer {
+    font-size: 12px;
+}
+
+.skinny {
+    margin-top: 0;
+}
+
+.help-block {
+    font-size: 12px;
+    background: url(/images/arrow.png) 0 3px no-repeat;
+    padding-left: 15px;
+}
+
+footer {
+    background-color: #444;
+    color: #AAA;
+    margin-top:30px;
+}
+
+.required label:after, .requiredMessage:before  {
+    content: "*";
+}
+
+.trainingTimes {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.trainingTimes li {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.branding-image img {
+    margin: 0 auto;
+}
+
+.customImage {
+    float:right;
+    margin: 0 0 10px 10px;
+}
+
+.sectionFooter {
+    text-align: center;
+}
+
+.trainingTimes .past, .trainingTimes .far-future {
+    display: none;
+}
+
+.trainingTimes .past {
+    color: #AAA;
+}
+
+.charlimit {
+    float: right !important;
+    font-size: 12px;
+    color: #999;
+}
+
+.charlimit.warning {
+    color: #F90;
+}
+
+.charlimit.danger {
+    color: #b94a48;
+}
+
+.survey-form .radio, .survey-form .checkbox {
+    margin-top: 0px;
+}
+
+.survey-form .submit-group {
+    text-align: center;
+}
+
+.modal-footer .btn, #registrationConfirmation .btn {
+    font-size: 14px;
+    padding: 6px 12px;
+}
+
+.recurring-sessions-info {
+    margin-bottom: 10px;
+}
+
+.cancel-text {
+    margin:0 12px;
+    cursor:pointer;
+}
+@media (max-width: 767px) {
+    .hero-unit {
+        padding: 15px;
+    }
+    .btn-primary {
+        width: 100%;
+    }
+    .sectionFooter, .survey-form .submit-group {
+        margin: 0 -15px;
+    }
+    .legal {
+        padding: 30px 15px;
+    }
+    #registration footer, #recordingRegistration footer {
+        margin-top: 0;
+    }
+    .modal-footer .btn {
+        width: 100%;
+    }
+    #recurringTrainingTimesBox .form-control {
+        font-size: 13px;
+    }
+
+    .modal-footer .btn:first-child{
+        margin-bottom: 15px;
+    }
+
+}
+
+/* prevent zoom of input fields on iOS to prevent clipping of character remaining count */
+@media only screen and (max-device-width:568px) {
+    select,   textarea,   input[type="text"],   input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"]
+    { font-size: 16px; }
+}
+
+/* Overwrite ToGo library */
+
+.alert {
+    font-size: 13px;
+    border: none;
+}
+
+.alert-info {
+    color: inherit;
+    background-color: inherit;
+    border-color: inherit;
+}
+
+.help-block {
+    background: inherit;
+}
+
+.help-block .citrix-icon-error{
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.sectionFooter .btn{
+
+    font-size:20px;
+    padding:12px 24px;
+}
+
+label {
+    font-family: citrixsans-regular;
+}
+
+ol li label {
+    vertical-align: top;
+}
