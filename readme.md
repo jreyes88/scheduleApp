@@ -17,7 +17,7 @@ $ export MediaManager_API_SECRET='YOUR_SECRET'
 $ cd node-pbs-tv-schedules
 $ node app.js
 ```
-The application will then be served up at localhost:3000/
+The application will then be served up at localhost:8080/
 ## Credits
 Built on the fantastic KQED Node PBS TV Schedule module.
 See
