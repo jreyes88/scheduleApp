@@ -1,0 +1,40 @@
+{{> nav}}
+
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+
+<ul class="navList">
+  <li>Themes:</li>
+  {{#each stories}}
+    <li><a href="/news/theme/{{sys.id}}">{{fields.themeTitle}}</a></li>
+  {{/each}}
+</ul>
+
+<ul class="navList">
+  <li>Shows:</li>
+  {{#each shows}}
+    <li><a href="/news/show/{{sys.id}}">{{fields.showTitle}}</a></li>
+  {{/each}}
+</ul>
+
+<ul>
+  {{#each posts.items}}
+    <li>
+      <p>{{fields.postTitle}}</p>
+      <div class="fb-video" data-href="https://www.facebook.com/facebook/videos/{{fields.facebookEmbedSlug}}/" data-width="500" data-show-text="false">
+        <blockquote cite="https://www.facebook.com/facebook/videos/{{fields.facebookEmbedSlug}}/" class="fb-xfbml-parse-ignore">
+      </div>
+      <p>{{formatParagraph fields.postTextContent}}</p>
+      {{!-- <p>See more stories by <a href="/news/show/{{fields.show.sys.id}}">{{../posts.includes.Entry.[0].fields.showTitle}}</a></p> --}}
+    </li>
+  {{/each}}
+</ul>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>

@@ -3,14 +3,13 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 
-<p>Schedule Date: {{scheduleDate}}</p>
-<p>Timestamp Date: {{timeDate}}</p>
 
-{{log title}}
-
+<div id="popupDateField" class="dateField"><p>{{scheduleYear scheduleDate}}-{{scheduleMonth scheduleDate}}-{{scheduleDay scheduleDate}}</p></div>
 <div class="timetable"></div>
 
-<script src="javascripts/timetable2.js"></script>
+<script type="text/javascript" src="../javascripts/prototype.js"></script>
+<script type="text/javascript" src="../javascripts/calendarview.js"></script>
+<script type="text/javascript" src="../javascripts/timetable.js"></script>
 <script>
   var year = {{scheduleYear scheduleDate}};
   var month = {{scheduleMonth scheduleDate}};
@@ -29,7 +28,7 @@
     {{#each listings}}
       timetable
         .addEvent(
-          "{{{title}}}",
+          "{{{formatShowTitle title}}}",
           '{{../full_name}}',
           new Date(
             year,
@@ -47,10 +46,43 @@
           ),
           '{{show_id}}',
           '{{program_id}}',
-          '{{type}}'
+          '{{type}}',
+          '{{nola_root}}'
         );
     {{/each}}
   {{/each}}
   var renderer = new Timetable.Renderer(timetable);
   renderer.draw('.timetable'); // any css selector
+
+  // Scroll to current hour and highlight the hour
+  window.onload = function() {
+    // Current time filtered to the nearest hour, format: 12:00 pm or 3:00 am
+    // This variable is called {{roundedTime}}
+    
+    const schedulePane = document.getElementById('schedulePane');
+    const channelsPane = document.getElementById('channelsPane');
+    const channelsPaneRect = channelsPane.getBoundingClientRect();
+
+    // Set a scroll event on scheduleWindow
+    // The event will scroll by comparing the rounded timeDate to text content of the time-label spans
+    const timeBlocks = Array.from(document.getElementsByClassName("time-label"));
+    let pos = 0;
+    for(var i = 0, l = timeBlocks.length; i < l; i++){
+      if (timeBlocks[i].textContent === '{{roundedTime}}') {
+        timeBlocks[i].classList.add('currentHour');
+        const rect = timeBlocks[i].getBoundingClientRect();
+        // When we style this ourselves, we can adjust the channelsPanerect.right to accomodate our own styles
+        pos = rect.left - (channelsPaneRect.right);
+        schedulePane.scrollLeft += pos;
+      }
+    }
+
+    // Set up Popup Calendar
+    Calendar.setup(
+      {
+        dateField      : 'popupDateField',
+        triggerElement : 'popupDateField'
+      }
+    )
+  }
 </script>

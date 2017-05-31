@@ -1,0 +1,8 @@
+{{> nav}}
+
+<h1>{{title}}</h1>
+<p>{{formatParagraph pageContent}}</p>
+
+{{#if imageURL}}
+  <img src="http:{{imageURL}}" alt="{{imageAlt}}" />
+{{/if}}

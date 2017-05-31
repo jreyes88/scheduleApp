@@ -1,0 +1,22 @@
+{{> nav}}
+
+<h1>{{title}}</h1>
+<p>About this program:</p>
+<p>{{{showDescription}}}</p>
+
+{{#if upcomingListings}}
+  <p>Upcoming show times:</p>
+  <ul>
+    {{#each upcomingListings}}
+      <li>
+        <div>
+          <p>{{episode_title}}</p>
+          <p>{{episode_description}}</p>
+          <p>{{day}}</p>
+          <p>{{start_time}} {{feed.timezone}}</p>
+          <p>Channel: {{feed.full_name}} {{feed.digital_channel}}</p>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+{{/if}}

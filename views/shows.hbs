@@ -1,0 +1,52 @@
+{{> nav}}
+
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+
+<form class="search-form">
+  <input type="text" class="search" placeholder="Search for a show">
+  <ul class="suggestions">
+    <li>Search for a show</li>
+  </ul>
+</form>
+
+<script>
+  const programs = {{{allPrograms}}};
+
+  function findMatches(wordToMatch, programs) {
+    return programs.filter(program => {
+      // here we need to figure out if the program matches what was searched
+      const regex = new RegExp(wordToMatch, 'gi');
+      return program.title.match(regex);
+    });
+  }
+
+  // function find
+
+  function displayMatches() {
+    const matchArray = findMatches(this.value, programs);
+    const html = matchArray.map(program => {
+      const regex = new RegExp(this.value, 'gi');
+      const programName = program.title.replace(regex, `<span>${this.value}</span>`);
+      const programID = program.program_id;
+      return `
+        <li>
+          <span><a href="/shows/${programID}">${programName}</a></span>
+        </li>
+      `;
+    }).join('');
+    suggestions.innerHTML = html;
+  }
+
+  const searchInput = document.querySelector('.search');
+  const suggestions = document.querySelector('.suggestions');
+
+  searchInput.addEventListener('change', displayMatches);
+  searchInput.addEventListener('keyup', displayMatches);
+
+  if (searchInput.value === "") {
+    suggestions.innerHTML = `
+      <li>Search for a show</li>
+    `;
+  }
+</script>

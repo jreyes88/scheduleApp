@@ -1,64 +1,50 @@
-var express = require('express');
-var router  = express.Router();
-var moment = require('moment-timezone');
-var channelFeeds;
+const express = require('express');
+const router  = express.Router();
+const moment = require('moment-timezone');
 
-function getDatestamp(req, res, next) {
-  var datestamp = moment().tz("America/Chicago").format('YYYYMMDD');
-  req.datestamp = datestamp;
+const PBSTvSchedules = require('node-pbs-tv-schedules'),
+  options = {};
+options.api_key =  process.env.PBS_TV_SCHEDULES_API_KEY || null;
+options.log_level = "info";
+const pbsAPI = new PBSTvSchedules(options);
+const zip = 78705;
 
-  // Attempt to parse the correct time:
-  var timestamp = moment().tz("America/Chicago").format('YYYY-MM-DD hh:mm:ss a');
-  req.timestamp = timestamp;
-  next();
-}
+// Get day's listing for KLRU
+const callsign = 'klru';
+let channelFeeds;
 
-function getListings(req, res, next) {
-  var PBSTvSchedules = require('node-pbs-tv-schedules'),
-      options = {};
+const getTodaysDate = function() {
+  datestamp = moment().tz("America/Chicago").format('YYYYMMDD');
+};
 
-  options.api_key =  process.env.PBS_TV_SCHEDULES_API_KEY || null;
-  options.log_level = "info";
-
-  var pbsAPI = new PBSTvSchedules(options);
-  var zip = 78705;
-
-  // Get day's listing for KLRU
-  var callsign = 'klru';
-  pbsAPI.get_day_schedule_for_callsign_date_async(callsign,req.datestamp)
-  .then(function(results){
-    pbsAPI.logger.info("Found " + results.feeds.length + " items");
-    channelFeeds = results.feeds;
-    return channelFeeds;
-  })
-  .catch(function (err) {
-      pbsAPI.logger.error(err);
-  })
-  .done(function(channelFeeds) {
-    req.channelFeeds = channelFeeds;
-    next();
-  });
-}
-
-router.use(getDatestamp);
-router.use(getListings);
-
-/* GET home page. */
+// GET home page. 
 router.get('/', function(req, res, next) {
-  res.render('schedule', {
-    title: 'Schedule',
-    style: 'style',
-    scheduleDate: req.datestamp,
-    klruFeeds: req.channelFeeds,
-    timeDate: req.timestamp
-  });
+  getTodaysDate();
+  res.redirect('/schedule/' + datestamp);
 });
 
-router.get('/show/:programID', function(req, res, next) {
-  console.log(req);
-  res.render('index', {
-    title: 'Program ID',
-    style: 'style'
+// GET specific date.
+router.get('/:date', function(req, res, next) {
+  // Get the current time of day
+  timestampRounded = moment.tz("America/Chicago").format('h') + ":00 " + moment.tz("America/Chicago").format('a');
+  const listingsDate = req.params.date;
+  pbsAPI.get_day_schedule_for_callsign_date_async(callsign,listingsDate)
+    .then(function(results) {
+      channelFeeds = results.feeds;
+      return channelFeeds;
+    })
+    .catch(function(err) {
+      pbsAPI.logger.error(err);
+    })
+    .done(function(channelFeeds) {
+      console.log(channelFeeds);
+      res.render('schedule', {
+      title: 'Schedule',
+      style: 'style',
+      scheduleDate: listingsDate,
+      klruFeeds: channelFeeds,
+      roundedTime: timestampRounded
+    });
   });
 });
 
